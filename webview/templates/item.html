@@ -1,27 +1,7 @@
-<!DOCTYPE html>
-<html>
+{% extends "layout.html" %}
 
-<head>
-    <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>About - </title>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-
-    {% if title %}
-
-        <title>Item - {{ title }}</title>
-
-    {% else %}
-
-        <title>Item - Item Info</title>
-
-    {% endif %}
-</head>
-
-<body>
+{% block content %}
 
     <h1>Item Page</h1>
 
-</body>
-
-</html>
+{% endblock content%}
