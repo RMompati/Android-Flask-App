@@ -4,13 +4,37 @@
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Home - </title>
+
+    {% if title %}
+
+        <title>Home - {{ title }}</title>
+
+    {% else %}
+
+        <title>Home - Store Inventory</title>
+
+    {% endif %}
+
     <meta name='viewport' content='width=device-width, initial-scale=1'>
 </head>
 
 <body>
+    <table>
 
-    <h1>Home Page</h1>
+        <tr>
+            <th>Item</th>
+            <th>Price(R)</th>
+            <th>Quantity in Stock</th>
+        </tr>
+        {% for item in items %}
+            <tr>
+                <td>{{ item.name }}</td>
+                <td>{{ item.price }}</td>
+                <td>{{ item.quantity }}</td>
+            </tr>
+        {% endfor %}
+
+    </table>
 
 </body>
 
