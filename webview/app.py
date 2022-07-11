@@ -71,12 +71,16 @@ def about():
 
 @app.route("/edit")
 def edit_item():
-    return render_template('about.html')
+    form = ItemInformationForm()
+
+    return render_template('edit.html', title='Edit Item', form=form)
 
 
 @app.route("/add")
 def add_item():
-    return render_template('about.html')@app.route("/edit")
+    form = ItemInformationForm()
+
+    return render_template('add.html', title='Add Item', form=form)
 
 
 @app.route("/view")

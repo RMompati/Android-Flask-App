@@ -21,10 +21,10 @@
     {% endif %}
 </head>
 
-<body>
+<body class="bg-dark bg-opacity-75 text-white">
 
     <header class="site-header">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
             <div class="container">
                 <a href="/" class="navbar-brand">Store Inventory</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-bs-target="#storeNavToggle"
@@ -38,8 +38,8 @@
                     </div>
 
                     <div class="navbar-nav">
-                        <a href="/new-item" class="nav-link">New Item</a>
-                        <a href="/edit-item" class="nav-link">Edit Item</a>
+                        <a href="{{ url_for('add_item') }}" class="nav-link">New Item</a>
+                        <a href="{{ url_for('edit_item') }}" class="nav-link">Edit Item</a>
                     </div>
                 </div>
             </div>
