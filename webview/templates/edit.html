@@ -2,6 +2,42 @@
 
 {% block content %}
 
-    <h1>Edit Item Page</h1>
+    <div class="main-content">
+
+        <form action="" method="post">
+            {{ form.hidden_tag() }}
+
+            <fieldset class="mb-3">
+
+                <legend class="border-bottom mb-4">Edit Item</legend>
+
+                <div class="mb-3">
+                    {{ form.item_name.label(class="form-label") }}
+                    {{ form.item_name(class="form-control form-control-lg bg-dark bg-gradient text-white") }}
+                </div>
+
+                <div class="mb-3">
+                    {{ form.item_price.label(class="form-label") }}
+                    <div class="input-group mb-3">
+                        <span class="input-group-text bg-dark bg-gradient text-white">R</span>
+                        {{ form.item_price(class="form-control form-control-lg bg-dark bg-gradient text-white") }}
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    {{ form.item_quantity.label(class="form-label") }}
+                    {{ form.item_quantity(class="form-control form-control-lg bg-dark bg-gradient text-white") }}
+                </div>
+
+            </fieldset>
+
+            <div class="d-grid gap-2 col-6 mx-auto">
+                {{ form.save_btn(class="btn btn-outline-info") }}
+            </div>
+        </form>
+
+
+
+    </div>
 
 {% endblock content%}

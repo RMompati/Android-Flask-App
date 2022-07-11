@@ -1,4 +1,11 @@
 body {
-    background: #fafafa;
+    /* background: #4a4a4a; */
     margin-top: 5rem;
+}
+
+.main-content {
+    padding: 10px 20px;
+    border: 1px solid #dddddd;
+    border-radius: 3px;
+    margin-bottom: 20px;
 }
