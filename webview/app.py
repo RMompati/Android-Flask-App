@@ -2,7 +2,7 @@
 A simple flask web application to work with Android's WebView.
 """
 
-from flask import Flask, render_template
+from flask import Flask, flash, render_template, redirect, url_for
 
 from forms import ItemInformationForm
 
@@ -59,7 +59,7 @@ items = [
     }
 ]
 
-@app.route("/")
+@app.route("/", methods=['GET'])
 def home():
     return render_template('home.html', items=items)
 
@@ -69,21 +69,26 @@ def about():
     return render_template('about.html')
 
 
-@app.route("/edit")
+@app.route("/edit", methods=['GET', 'POST'])
 def edit_item():
     form = ItemInformationForm()
 
     return render_template('edit.html', title='Edit Item', form=form)
 
 
-@app.route("/add")
+@app.route("/add", methods=['GET', 'POST'])
 def add_item():
     form = ItemInformationForm()
+
+    if form.validate_on_submit():
+        flash('New item added to inventory.', 'success')
+
+        return redirect(url_for('home'))
 
     return render_template('add.html', title='Add Item', form=form)
 
 
-@app.route("/view")
+@app.route("/view", methods=['GET'])
 def view_item():
     return render_template('item.html')
 
