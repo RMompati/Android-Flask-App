@@ -13,20 +13,53 @@
 
                 <div class="mb-3">
                     {{ form.item_name.label(class="form-label") }}
-                    {{ form.item_name(class="form-control form-control-lg bg-dark bg-gradient text-white") }}
+
+                    {%if form.item_name.errors %}
+                        {{ form.item_name(class="form-control form-control-lg bg-dark bg-gradient text-white is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.item_name.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+
+                    {% else %}
+                        {{ form.item_name(class="form-control form-control-lg bg-dark bg-gradient text-white") }}
+                    {% endif %}
                 </div>
 
                 <div class="mb-3">
                     {{ form.item_price.label(class="form-label") }}
                     <div class="input-group mb-3">
                         <span class="input-group-text bg-dark bg-gradient text-white">R</span>
-                        {{ form.item_price(class="form-control form-control-lg bg-dark bg-gradient text-white") }}
+
+                        {%if form.item_price.errors %}
+                            {{ form.item_price(class="form-control form-control-lg bg-dark bg-gradient text-white is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.item_price.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+
+                        {% else %}
+                            {{ form.item_price(class="form-control form-control-lg bg-dark bg-gradient text-white") }}
+                        {% endif %}
                     </div>
                 </div>
 
                 <div class="mb-3">
                     {{ form.item_quantity.label(class="form-label") }}
-                    {{ form.item_quantity(class="form-control form-control-lg bg-dark bg-gradient text-white") }}
+
+                    {%if form.item_quantity.errors %}
+                        {{ form.item_quantity(class="form-control form-control-lg bg-dark bg-gradient text-white is-invalid") }}
+
+                        <div class="invalid-feedback">
+                            {% for error in form.item_quantity.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.item_quantity(class="form-control form-control-lg bg-dark bg-gradient text-white") }}
+                    {% endif %}
                 </div>
 
             </fieldset>

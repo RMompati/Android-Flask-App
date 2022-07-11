@@ -73,6 +73,11 @@ def about():
 def edit_item():
     form = ItemInformationForm()
 
+    if form.validate_on_submit():
+        flash('Item info updated.', 'success')
+
+        return redirect(url_for('home'))
+
     return render_template('edit.html', title='Edit Item', form=form)
 
 
