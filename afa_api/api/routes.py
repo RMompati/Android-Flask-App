@@ -2,9 +2,10 @@
 Our API routes.
 """
 
+from flask import request
 import json
 
-from api import app
+from api import app, db
 from api.models import Item
 
 
@@ -33,7 +34,14 @@ def add_data():
     """
     Adds a new item to the store inventory data.
     """
-    return "<h1>Adds Data</h1>"
+    form = request.form
+
+    if form['name']:
+        item = Item(name=form['name'], price=form['price'], quantity=form['quantity'])
+        db.session.add(item)
+        db.session.commit()
+
+    return "<h1>Adds New Data</h1>"
 
 
 @app.route('/update', methods=['GET', 'POST'])

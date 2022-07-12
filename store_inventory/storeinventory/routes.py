@@ -92,6 +92,14 @@ def add_item():
     form = ItemInformationForm()
 
     if form.validate_on_submit():
+        item_dump = {
+            'name': form.item_name.data,
+            'price': form.item_price.data,
+            'quantity': form.item_quantity.data
+        }
+
+        response = requests.post('http://127.0.0.1:7776/new', data=item_dump)
+
         flash('New item added to inventory.', 'success')
 
         return redirect(url_for('home'))
