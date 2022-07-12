@@ -2,6 +2,8 @@
 Our API routes.
 """
 
+import json
+
 from api import app
 from api.models import Item
 
@@ -11,7 +13,19 @@ def get_data():
     """
     Gets all the store inventory data.
     """
-    return "<h1>Gets Data</h1>"
+
+    items = Item.query.all()
+    items_dump = []
+
+    for item in items:
+        items_dump.append({
+            'id': item.id,
+            'name': item.name,
+            'price': item.price,
+            'quantity': item.quantity
+        })
+
+    return json.dumps(items_dump)
 
 
 @app.route('/new', methods=['GET', 'POST'])

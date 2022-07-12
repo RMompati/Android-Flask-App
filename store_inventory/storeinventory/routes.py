@@ -2,6 +2,7 @@
 Store Inventory routes.
 """
 from flask import flash, render_template, redirect, url_for
+import requests
 
 from storeinventory import app
 from storeinventory.forms import ItemInformationForm
@@ -57,6 +58,15 @@ items = [
 
 @app.route("/", methods=['GET'])
 def home():
+
+    response = requests.get("http://127.0.0.1:7776/")
+    if response.status_code == 200:
+        flash("Items fetched successfully", category='success')
+        items =  response.json()
+    else:
+        flash("Items not fetched", category='failure')
+        items = []
+
     return render_template('home.html', items=items)
 
 
