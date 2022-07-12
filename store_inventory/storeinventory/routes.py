@@ -1,15 +1,10 @@
 """
-A simple flask web application to work with Android's WebView.
+Store Inventory routes.
 """
+from flask import flash, render_template, redirect, url_for
 
-from flask import Flask, flash, render_template, redirect, url_for
-
-from forms import ItemInformationForm
-
-
-app = Flask(__name__)
-
-app.config['SECRET_KEY'] = 'f4e83b72bf22101657b3cc64c9ccbe68'
+from storeinventory import app
+from storeinventory.forms import ItemInformationForm
 
 items = [
     {
@@ -59,6 +54,7 @@ items = [
     }
 ]
 
+
 @app.route("/", methods=['GET'])
 def home():
     return render_template('home.html', items=items)
@@ -96,6 +92,3 @@ def add_item():
 @app.route("/view", methods=['GET'])
 def view_item():
     return render_template('item.html')
-
-if __name__ == "__main__":
-    app.run(debug=True, port=7676)

@@ -1,3 +1,7 @@
+"""
+Store Inventory forms.
+"""
+
 from flask_wtf import FlaskForm
 from wtforms import StringField, FloatField, IntegerField, SubmitField
 from wtforms.validators import DataRequired
