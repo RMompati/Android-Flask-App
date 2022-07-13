@@ -131,4 +131,4 @@ dmypy.json
 # VS Code
 .vscode/
 
-*.db
+*old.db
