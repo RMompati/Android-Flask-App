@@ -44,11 +44,41 @@ def add_data():
     return "<h1>Adds New Data</h1>"
 
 
+@app.route('/get')
+def get_item():
+    """
+    Gets an item given the id.
+    """
+
+    form = request.form
+    id_ = form['id']
+
+    item = Item.query.filter(Item.id == id_).first()
+    item_dump = {
+        'id': item.id,
+        'name': item.name,
+        'price': item.price,
+        'quantity': item.quantity
+    }
+
+    return json.dumps(item_dump)
+
 @app.route('/update', methods=['GET', 'POST'])
 def edit_data():
     """
     Edits the store inventory data.
     """
+    form = request.form
+
+    if form['name']:
+
+        item = Item.query.filter(Item.id == form['id']).first()
+        item.name = form['name']
+        item.price = float(form['price'])
+        item.quantity = int(form['quantity'])
+
+        db.session.commit()
+
     return "<h1>Edits Data</h1>"
 
 

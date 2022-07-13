@@ -10,11 +10,13 @@
             <th>Quantity in Stock</th>
         </tr>
         {% for item in items %}
+
             <tr>
-                <td>{{ item.name }}</td>
-                <td>{{ item.price }}</td>
-                <td>{{ item.quantity }}</td>
+                <td><a href="{{ url_for('edit_item', item_id=item.id) }}" class="btn text-white">{{ item.name }}</a></td>
+                <td><a href="{{ url_for('edit_item', item_id=item.id) }}" class="btn text-white">{{ item.price }}</a></td>
+                <td><a href="{{ url_for('edit_item', item_id=item.id) }}" class="btn text-white">{{ item.quantity }}</a></td>
             </tr>
+
         {% endfor %}
 
     </table>
